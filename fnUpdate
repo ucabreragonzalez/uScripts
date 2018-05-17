@@ -1,0 +1,23 @@
+#!/bin/bash
+#-----------------------------------------------------------
+#   Function    : fnUpdate
+#   Date        : 02/08/2015
+#   Objetive    : Install Updates
+#   Parameters  : (opt) put "-y" to acept all the questions
+#
+#   Exaple      : fnUpdate -y
+#-------------------------------------------------Modules
+source modGeneral
+#-------------------------------------------------Variables
+G_AVOID_ERROR=1
+#-------------------------------------------------Functions
+
+#-------------------------------------------------Main
+ShowHeader "Update Started..."
+
+LogMessage "Executing: sudo dnf update $*"
+sudo dnf update $*
+LogMessage "Executing: sudo pkcon update $*"
+sudo pkcon update $*
+
+ShowHeader "Updated Succesfully..."

@@ -1,0 +1,204 @@
+#!/bin/bash
+#-----------------------------------------------------------
+#   Function    : modGeneral
+#   Date        : 16/05/2018
+#   Objetive    : General functions to be used in other scripts
+#   Parameters  : N/A
+#
+#   Exaple      : source modGeneral
+#-------------------------------------------------Modules
+source varGeneral
+#-------------------------------------------------Variables
+
+#-------------------------------------------------Functions
+
+#-----------------------------------------------------------
+#   Function    : errSection
+#   Date        : 02/08/2015
+#   Objetive    : Add a msg into the log and finished the program.
+#   Parameters  : strErrorMessage       : Text to being inserted as message.
+#
+#   Exaple      : ErrorExit "Text to insert" false
+#-----------------------------------------------------------
+#set -e
+errSection()
+{
+    local iErrorCode="$?"
+    if [ $G_AVOID_ERROR = 0 ]; then
+        if [ "$G_PROCESS" = "" ]; then
+            ErrorExit "$iErrorCode" "$1" "$2"
+        else
+            ErrorExit "$iErrorCode" "$1" "$2" "$G_PROCESS"
+        fi
+    fi
+}
+#trap 'if [ $? == 2 ]; then echo "Failed"; exit 2; fi' ERR
+trap 'errSection $LINENO $G_PROG_NAME' ERR
+
+#-----------------------------------------------------------
+#   Function    : ErrorExit
+#   Date        : 02/08/2015
+#   Objetive    : Add a msg into the log and finished the program.
+#   Parameters  : strErrorMessage       : Text to being inserted as message.
+#
+#   Exaple      : ErrorExit "Text to insert" false
+#-----------------------------------------------------------
+ErrorExit()
+{
+    local strErrorMessage="$3 : [ERROR $1 at LINENO:$2] ${4:-"Unknown Error"}"
+    WriteMessageLog "$strErrorMessage"
+    WriteMessageLog "Terminando Ejecución con Error..." true
+    echo "Para mayor detalle consulte el archivo: $G_LOG_PATH/$G_LOG_FILE"
+    exit -666
+    #echo "${G_PROG_NAME}: ${1:-"Unknown Error"}" 1>&2
+    #"$LINENO: An error has occurred."
+}
+
+#-----------------------------------------------------------
+#   Function    : WriteMessageLog
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a log that we have configurated.
+#   Parameters  : strText       : Text to being inserted.
+#                 bolShowMsg (optional) : If "true" the msg is show at screen as well.
+#
+#   Exaple      : WriteMessageLog "Text to insert" false
+#-----------------------------------------------------------
+WriteMessageLog()
+{
+    local strFile="$G_LOG_PATH/$G_LOG_FILE"
+    local strText="$1"
+    local bolShowMsg="${2:-"false"}"
+    local strUser=$USER
+    local datDate=$(date +"$G_FORMAT_TIMESTAMP")
+    local strMessage="$datDate|$G_PROG_NAME|$strUser|$strText"
+
+    FolderCreate "$G_LOG_PATH"
+
+    #Si no existe Log, crear con cabeceras
+    if [ $(FileExist "$strFile") = false ]; then
+        AddIntoFile "$strFile" "DATE|PROCESS|USER|MESSAGE"
+    fi
+
+    AddIntoFile "$strFile" "$strMessage"
+
+    if [ $bolShowMsg = true ]; then
+        echo "$strText"
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : LogMessage
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a log that we have configurated.
+#   Parameters  : strText       : Text to being inserted.
+#                 bolShowMsg (optional) : If "true" the msg is show at screen as well.
+#
+#   Exaple      : LogMessage "Text to insert" false
+#-----------------------------------------------------------
+LogMessage()
+{
+    WriteMessageLog "$1"
+}
+
+#-----------------------------------------------------------
+#   Function    : LogMessage
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a log that we have configurated.
+#   Parameters  : strText       : Text to being inserted.
+#                 bolShowMsg (optional) : If "true" the msg is show at screen as well.
+#
+#   Exaple      : LogMessage "Text to insert" false
+#-----------------------------------------------------------
+ShowMessage()
+{
+    WriteMessageLog "$1" true
+}
+
+#-----------------------------------------------------------
+#   Function    : LogMessage
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a log that we have configurated.
+#   Parameters  : strText       : Text to being inserted.
+#                 bolShowMsg (optional) : If "true" the msg is show at screen as well.
+#
+#   Exaple      : LogMessage "Text to insert" false
+#-----------------------------------------------------------
+ShowHeader()
+{
+    WriteMessageLog "-----------------------------------------------------------" true
+    WriteMessageLog "$1" true
+    WriteMessageLog "-----------------------------------------------------------" true
+}
+
+#-----------------------------------------------------------
+#   Function    : FolderExistDelete
+#   Date        : 02/08/2015
+#   Objetive    : Create a folder within all the path.
+#   Parameters  : strFolder      : Path of the folder.
+#
+#   Exaple      : FolderCreate "path/to/the/folder"
+#-----------------------------------------------------------
+FolderCreate()
+{
+    local strFolder="$1"
+
+    if [ $(FolderExist "$strFolder") = false ]; then
+        mkdir -p "$strFolder"
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : FolderExist
+#   Date        : 02/08/2015
+#   Objetive    : Validate whether a folder exists.
+#   Parameters  : strFolder      : Path of the file to Validate
+#
+#   Exaple      : variable=$(FolderExist "path/to/the/file")
+#-----------------------------------------------------------
+FolderExist()
+{
+    local strFolder="$1"
+    
+    if [ -d "$strFolder" ]; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : FileExist
+#   Date        : 02/08/2015
+#   Objetive    : Validate whether a file exists.
+#   Parameters  : strFile       : Path of the file to Validate
+#
+#   Exaple      : variable=$(FileExist "path/to/the/file")
+#-----------------------------------------------------------
+FileExist()
+{
+    local strFile="$1"
+
+    if [ -f "$strFile" ]; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : AddIntoFile
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a file and create
+#                 it if does not exists.
+#   Parameters  : strFolder      : Path to the file.
+#                 strText        : Text to being inserted.
+#
+#   Exaple      : AddIntoFile "path/to/the/file" "Text to insert"
+#-----------------------------------------------------------
+AddIntoFile()
+{
+    local strFile="$1"
+    local strText="$2"
+
+    echo "$strText" >> $strFile
+}
