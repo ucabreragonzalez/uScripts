@@ -1,0 +1,35 @@
+#!/bin/bash
+#-----------------------------------------------------------
+#   Function    : fnDeploy
+#   Date        : 02/08/2018
+#   Objetive    : Deploy from GitHub
+#   Parameters  : (opt) put "-y" to acept all the questions
+#
+#   Exaple      : fnDeploy
+#-------------------------------------------------Modules
+
+#-------------------------------------------------Variables
+l_github_repo=https://github.com/ucabreragonzalez/uScripts.git
+l_strPathTemporary=$(mktemp -d)
+#-------------------------------------------------Functions
+
+#-------------------------------------------------Main
+# Clone git repo to get the last version
+git clone -b DEV https://github.com/ucabreragonzalez/uScripts.git $l_strPathTemporary
+
+source $l_strPathTemporary/modGeneral
+
+ShowHeader " Deploy Scripts Started..."
+ShowMessage " - GitHub repository has been cloned."
+
+ShowMessage " - Deleting previous scripts if exist..."
+FolderCreate "$G_SCRIPTS_PATH"
+find $G_SCRIPTS_PATH -maxdepth 1 -type f -delete
+
+ShowMessage " - Copying Scripts to: $G_SCRIPTS_PATH"
+cp $l_strPathTemporary/* $G_SCRIPTS_PATH/
+
+ShowMessage " - Creating links..."
+"$G_SCRIPTS_PATH"/prcCrearAccesos
+
+ShowMessage " Deploy terminated successfully!!"
