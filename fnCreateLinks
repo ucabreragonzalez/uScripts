@@ -8,7 +8,7 @@
 #   Exaple      : fnDeploy
 #-------------------------------------------------Modules
 source modGeneral
-source $G_SCRIPTS_PATH/prcCrearAccesos.conf
+source $G_SCRIPTS_PATH/fnCreateLinks.conf
 #-------------------------------------------------Variables
 l_strLinksPath=/usr/bin
 l_strLinkList=(${l_strLinkList})
