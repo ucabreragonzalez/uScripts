@@ -30,6 +30,6 @@ ShowMessage " - Copying Scripts to: $G_SCRIPTS_PATH"
 cp $l_strPathTemporary/* $G_SCRIPTS_PATH/
 
 ShowMessage " - Creating links..."
-"$G_SCRIPTS_PATH"/prcCrearAccesos
+"$G_SCRIPTS_PATH"/fnCreateLinks
 
 ShowMessage " Deploy terminated successfully!!"
