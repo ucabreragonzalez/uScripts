@@ -19,7 +19,7 @@ l_strBranch=DEV
 git clone -b $l_strBranch https://github.com/ucabreragonzalez/uScripts.git $l_strPathTemporary
 
 cd $l_strPathTemporary
-source $l_strPathTemporary/modGeneral
+source modGeneral
 
 ShowHeader " Deploy Scripts Started... branch: $l_strBranch"
 ShowMessage " - GitHub repository has been cloned."
