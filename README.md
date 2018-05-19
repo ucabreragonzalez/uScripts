@@ -8,8 +8,8 @@ Run the below command to install in "FEDORA"
 
 # For Dev version:
 
-sudo sh -c "$(curl https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy)"
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
 
 # For master version:
 
-sudo sh -c "$(curl https://raw.githubusercontent.com/ucabreragonzalez/uScripts/master/fnDeploy)"
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/master/fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
