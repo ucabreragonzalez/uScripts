@@ -11,7 +11,7 @@
 #-------------------------------------------------Variables
 l_github_repo=https://github.com/ucabreragonzalez/uScripts.git
 l_strPathTemporary=$(mktemp -d)
-l_strBranch="${1:-"master"}"
+l_strBranch=DEV
 #-------------------------------------------------Functions
 
 #-------------------------------------------------Main
