@@ -8,7 +8,7 @@ Run the below command to install in "FEDORA"
 
 # For Dev version:
 
-sudo sh -c "$(curl https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy)"
+sudo sh -c "$(curl https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy) DEV"
 
 # For master version:
 

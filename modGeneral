@@ -125,9 +125,26 @@ ShowMessage()
 #-----------------------------------------------------------
 ShowHeader()
 {
+    WriteMessageLog "" true
     WriteMessageLog "-----------------------------------------------------------" true
     WriteMessageLog "$1" true
     WriteMessageLog "-----------------------------------------------------------" true
+    WriteMessageLog "" true
+}
+
+#-----------------------------------------------------------
+#   Function    : LogMessage
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a log that we have configurated.
+#   Parameters  : strText       : Text to being inserted.
+#                 bolShowMsg (optional) : If "true" the msg is show at screen as well.
+#
+#   Exaple      : LogMessage "Text to insert" false
+#-----------------------------------------------------------
+ShowSubHeader()
+{
+    WriteMessageLog "$1" true
+    WriteMessageLog "----------------------------------" true
     WriteMessageLog "" true
 }
 
@@ -168,21 +185,19 @@ FolderExist()
 }
 
 #-----------------------------------------------------------
-#   Function    : FileExist
+#   Function    : FolderExistDelete
 #   Date        : 02/08/2015
-#   Objetive    : Validate whether a file exists.
-#   Parameters  : strFile       : Path of the file to Validate
+#   Objetive    : If the folder exists delete it.
+#   Parameters  : strFolder      : Path of the folder.
 #
-#   Exaple      : variable=$(FileExist "path/to/the/file")
+#   Exaple      : FolderExistDelete "path/to/the/file"
 #-----------------------------------------------------------
-FileExist()
+FolderExistDelete()
 {
-    local strFile="$1"
+    local strFolder="$1"
 
-    if [ -f "$strFile" ]; then
-        echo true
-    else
-        echo false
+    if [ $(FolderExist "$strFolder") = true ]; then
+        rm -rf "$strFolder"
     fi
 }
 
@@ -202,4 +217,40 @@ AddIntoFile()
     local strText="$2"
 
     echo "$strText" >> $strFile
+}
+
+#-----------------------------------------------------------
+#   Function    : FileExist
+#   Date        : 02/08/2015
+#   Objetive    : Validate whether a file exists.
+#   Parameters  : strFile       : Path of the file to Validate
+#
+#   Exaple      : variable=$(FileExist "path/to/the/file")
+#-----------------------------------------------------------
+FileExist()
+{
+    local strFile="$1"
+
+    if [ -f "$strFile" ]; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : FileExistDelete
+#   Date        : 02/08/2015
+#   Objetive    : If the file exists delete it.
+#   Parameters  : strFile       : Path of the file to Validate
+#
+#   Exaple      : FileExistDelete "path/to/the/file"
+#-----------------------------------------------------------
+FileExistDelete()
+{
+    local strFile="$1"
+
+    if [ $(FileExist "$strFile") = true ]; then
+        rm "$strFile"
+    fi
 }

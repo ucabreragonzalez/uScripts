@@ -11,15 +11,17 @@
 #-------------------------------------------------Variables
 l_github_repo=https://github.com/ucabreragonzalez/uScripts.git
 l_strPathTemporary=$(mktemp -d)
+l_strBranch="${1:-"master"}"
 #-------------------------------------------------Functions
 
 #-------------------------------------------------Main
 # Clone git repo to get the last version
-git clone -b DEV https://github.com/ucabreragonzalez/uScripts.git $l_strPathTemporary
+git clone -b $l_strBranch https://github.com/ucabreragonzalez/uScripts.git $l_strPathTemporary
 
-source $l_strPathTemporary/modGeneral
+cd $l_strPathTemporary
+source modGeneral
 
-ShowHeader " Deploy Scripts Started..."
+ShowHeader " Deploy Scripts Started... branch: $l_strBranch"
 ShowMessage " - GitHub repository has been cloned."
 
 ShowMessage " - Deleting previous scripts if exist..."
@@ -32,4 +34,4 @@ cp $l_strPathTemporary/* $G_SCRIPTS_PATH/
 ShowMessage " - Creating links..."
 "$G_SCRIPTS_PATH"/fnCreateLinks
 
-ShowMessage " Deploy terminated successfully!!"
+ShowSubHeader " Deploy terminated successfully!!"
