@@ -143,6 +143,8 @@ ShowHeader()
 #-----------------------------------------------------------
 ShowSubHeader()
 {
+    WriteMessageLog "" true
+    WriteMessageLog "----------------------------------" true
     WriteMessageLog "$1" true
     WriteMessageLog "----------------------------------" true
     WriteMessageLog "" true

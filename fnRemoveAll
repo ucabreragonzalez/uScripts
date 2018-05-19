@@ -1,23 +1,25 @@
 #!/bin/bash
 #-----------------------------------------------------------
-#   Function    : fnDeploy
+#   Function    : fnRemoveAll
 #   Date        : 02/08/2018
 #   Objetive    : Deploy from GitHub
 #   Parameters  : (opt) put "-y" to acept all the questions
 #
 #   Exaple      : fnDeploy
 #-------------------------------------------------Modules
-
+source modGeneral
 #-------------------------------------------------Variables
-
+l_strLinksPath=/usr/bin
 #-------------------------------------------------Functions
 
 #-------------------------------------------------Main
+ShowHeader " Remove All Started ..."
 
-l_strLinkList="varGeneral
-modGeneral
-fnDeploy
-fnCreateLinks
-fnUpdate
-fnRemoveAll
-"
+ShowMessage " - Deleting links ..."
+sudo rm $l_strLinksPath/fn* $l_strLinksPath/mod* $l_strLinksPath/var*
+
+ShowMessage " - Deleting Scripts"
+sudo rm -rf $G_SCRIPTS_PATH
+
+ShowSubHeader " Remove All terminated successfully!!"
+
