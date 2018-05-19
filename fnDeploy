@@ -19,6 +19,7 @@ l_strBranch=DEV
 git clone -b $l_strBranch https://github.com/ucabreragonzalez/uScripts.git $l_strPathTemporary
 
 cd $l_strPathTemporary
+ls
 source modGeneral
 
 ShowHeader " Deploy Scripts Started... branch: $l_strBranch"
