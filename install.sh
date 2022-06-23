@@ -11,4 +11,4 @@ install_path=/var/opt/uScripts
 git clone $github_repo --branch $branch_name --single-branch $temp_path
 
 cd $temp_path
-./create-folder "$G_SCRIPTS_PATH"
+./scripts/create-folder "$G_SCRIPTS_PATH"
