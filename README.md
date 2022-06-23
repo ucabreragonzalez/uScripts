@@ -1,10 +1,8 @@
 # uScrips
 Repo for Scripts
 
-I feel so embarrassed, but I need this:
-http://rogerdudler.github.io/git-guide/index.es.html
-
-Run the below command to install in "FEDORA"
+Run the below command to install
+* Tested on Fedora
 
 # For Dev version:
 

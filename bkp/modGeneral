@@ -1,0 +1,104 @@
+#!/bin/bash
+#-----------------------------------------------------------
+#   Function    : modGeneral
+#   Date        : 16/05/2018
+#   Objetive    : General functions to be used in other scripts
+#   Parameters  : N/A
+#
+#   Exaple      : source modGeneral
+#-------------------------------------------------Modules
+source varGeneral
+#-------------------------------------------------Variables
+
+#-------------------------------------------------Functions
+
+
+
+
+#-----------------------------------------------------------
+#   Function    : FolderExistDelete
+#   Date        : 02/08/2015
+#   Objetive    : Create a folder within all the path.
+#   Parameters  : strFolder      : Path of the folder.
+#
+#   Exaple      : FolderCreate "path/to/the/folder"
+#-----------------------------------------------------------
+FolderCreate()
+{
+    local strFolder="$1"
+
+    if [ $(FolderExist "$strFolder") = false ]; then
+        mkdir -p "$strFolder"
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : FolderExistDelete
+#   Date        : 02/08/2015
+#   Objetive    : If the folder exists delete it.
+#   Parameters  : strFolder      : Path of the folder.
+#
+#   Exaple      : FolderExistDelete "path/to/the/file"
+#-----------------------------------------------------------
+FolderExistDelete()
+{
+    local strFolder="$1"
+
+    if [ $(FolderExist "$strFolder") = true ]; then
+        rm -rf "$strFolder"
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : AddIntoFile
+#   Date        : 02/08/2015
+#   Objetive    : Append text at the end of a file and create
+#                 it if does not exists.
+#   Parameters  : strFolder      : Path to the file.
+#                 strText        : Text to being inserted.
+#
+#   Exaple      : AddIntoFile "path/to/the/file" "Text to insert"
+#-----------------------------------------------------------
+AddIntoFile()
+{
+    local strFile="$1"
+    local strText="$2"
+
+    echo "$strText" >> $strFile
+}
+
+#-----------------------------------------------------------
+#   Function    : FileExist
+#   Date        : 02/08/2015
+#   Objetive    : Validate whether a file exists.
+#   Parameters  : strFile       : Path of the file to Validate
+#
+#   Exaple      : variable=$(FileExist "path/to/the/file")
+#-----------------------------------------------------------
+FileExist()
+{
+    local strFile="$1"
+
+    if [ -f "$strFile" ]; then
+        echo true
+    else
+        echo false
+    fi
+}
+
+#-----------------------------------------------------------
+#   Function    : FileExistDelete
+#   Date        : 02/08/2015
+#   Objetive    : If the file exists delete it.
+#   Parameters  : strFile       : Path of the file to Validate
+#
+#   Exaple      : FileExistDelete "path/to/the/file"
+#-----------------------------------------------------------
+FileExistDelete()
+{
+    local strFile="$1"
+
+    if [ $(FileExist "$strFile") = true ]; then
+        rm "$strFile"
+    fi
+}
