@@ -1,13 +1,15 @@
 # uScrips
 Repo for Scripts
 
-Run the below command to install
-* Tested on Fedora
+Run the below command to install:
 
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/{branch_name}/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "{branch_name}"
+
+Replace {branch_name} with branch name to install:
 # For Dev version:
 
-cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy -O fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/dev/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "dev"
 
-# For master version:
+# For main version:
 
-cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/master/fnDeploy -O fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/main/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "main"
