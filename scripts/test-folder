@@ -6,7 +6,7 @@
 #   Objetive    : Validate whether a folder exists.
 #   Parameters  : folder_path
 #
-#   Exaple      : variable=$(test-folder "path/to/the/folder")
+#   Example      : variable=$(test-folder "path/to/the/folder")
 #-----------------------------------------------------------
 folder_path="$1"
     

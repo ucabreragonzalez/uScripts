@@ -1,13 +1,12 @@
 #!/bin/bash
 
-
 #-----------------------------------------------------------
-#   Function    : create-folder
+#   Function    : new-folder
 #   Date        : 23/06/2022
-#   Objetive    : Create a folder with path if it does not exist
+#   Objetive    : Create a new folder with path if it does not exist
 #   Parameters  : folder_path
 #
-#   Exaple      : variable=$(create-folder "path/to/the/folder")
+#   Example      : variable=$(new-folder "path/to/the/folder")
 #-----------------------------------------------------------
 folder_path="$1"
 
