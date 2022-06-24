@@ -17,21 +17,39 @@ if [ ! -d "$install_path" ]; then
     mkdir -p "$install_path"
 fi
 
-# If previos scripts then delete
+# If previous scripts then delete
+echo "- delete previous scripts if exists"
 find $install_path -maxdepth 1 -type f -delete
-# find /path/to/directory -xtype l -delete
+arrLinks=$(find $links_path -xtype l)
+arrLinks=(${arrLinks})
+for index in ${!arrLinks[*]}
+do
+    link_path=${arrLinks[index]}
+    tmp=$(ls -l $link_path)
+
+    if [[ "$tmp" == *"uScripts"* ]]; then
+        echo "- deleting: $link_path"
+        unlink $link_path
+    fi
+done
+
 
 # Copy scripts
+echo "- copying scripts into $install_path/"
 cp $temp_path/scripts/* $install_path/
 chmod +x $install_path/*
 
 #Create new links
 arrScripts=$(find $install_path -maxdepth 1 -type f)
+arrScripts=(${arrScripts})
 for index in ${!arrScripts[*]}
 do
     script_path=${arrScripts[index]}
     tmp=(${script_path//// })
     script_name=${tmp[-1]}
 
-	sudo ln -s $install_path/$script_name $links_path/$script_name
+    echo "- creating link: $script_name"
+	ln -s $install_path/$script_name $links_path/$script_name
 done
+
+echo "Finished!"
