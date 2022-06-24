@@ -6,7 +6,7 @@
 #   Objetive    : Validate whether a file exists.
 #   Parameters  : file_path
 #
-#   Exaple      : variable=$(test-file "path/to/the/file")
+#   Example      : variable=$(test-file "path/to/the/file")
 #-----------------------------------------------------------
 file_path="$1"
     
