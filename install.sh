@@ -18,7 +18,7 @@ if [ ! -d "$install_path" ]; then
 fi
 
 # If previous scripts then delete
-echo "- delete previous scripts if exists"
+echo "- Deleting previous scripts"
 find $install_path -maxdepth 1 -type f -delete
 arrLinks=$(find $links_path -xtype l)
 arrLinks=(${arrLinks})
@@ -28,11 +28,10 @@ do
     tmp=$(ls -l $link_path)
 
     if [[ "$tmp" == *"uScripts"* ]]; then
-        echo "- deleting: $link_path"
+        echo "- Deleting link: $link_path"
         unlink $link_path
     fi
 done
-
 
 # Copy scripts
 echo "- copying scripts into $install_path/"
