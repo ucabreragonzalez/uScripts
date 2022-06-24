@@ -23,3 +23,14 @@ find $install_path -maxdepth 1 -type f -delete
 
 # Copy scripts
 cp $temp_path/scripts/* $install_path/
+
+#Create new links
+arrScripts=$(find $install_path -maxdepth 1 -type f)
+for index in ${!arrScripts[*]}
+do
+    script_path=${arrScripts[index]}
+    tmp=(${script_path//// })
+    script_name=${tmp[-1]}
+
+	sudo ln -s $install_path/$script_name $links_path/$script_name
+done
