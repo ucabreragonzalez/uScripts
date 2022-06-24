@@ -22,4 +22,4 @@ find $install_path -maxdepth 1 -type f -delete
 # find /path/to/directory -xtype l -delete
 
 # Copy scripts
-cp $temp_path/* $install_path/
+cp $temp_path/scripts/* $install_path/
