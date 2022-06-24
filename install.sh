@@ -23,6 +23,7 @@ find $install_path -maxdepth 1 -type f -delete
 
 # Copy scripts
 cp $temp_path/scripts/* $install_path/
+chmod +x $install_path/*
 
 #Create new links
 arrScripts=$(find $install_path -maxdepth 1 -type f)
