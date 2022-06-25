@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : remove-file
+#   Date        : 23/06/2022
+#   Objetive    : Removes a file if it exists
+#   Parameters  : file_path
+#
+#   Example      : variable=$(remove-file "path/to/the/file")
+#-----------------------------------------------------------
+file_path="$1"
+
+if [ $(test-file "$file_path") = true ]; then
+    rm -rf "$file_path"
+fi
