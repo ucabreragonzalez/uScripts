@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : new-folder
+#   Date        : 23/06/2022
+#   Objetive    : Create a new folder with path if it does not exist
+#   Parameters  : folder_path
+#
+#   Example      : variable=$(new-folder "path/to/the/folder")
+#-----------------------------------------------------------
+folder_path="$1"
+
+if [ $(test-folder "$folder_path") = false ]; then
+    mkdir -p "$folder_path"
+fi

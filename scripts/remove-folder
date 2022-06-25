@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : remove-folder
+#   Date        : 23/06/2022
+#   Objetive    : Removes a folder if it exists
+#   Parameters  : folder_path
+#
+#   Example      : variable=$(remove-folder "path/to/the/folder")
+#-----------------------------------------------------------
+folder_path="$1"
+
+if [ $(test-folder "$folder_path") = true ]; then
+    rm -rf "$folder_path"
+fi

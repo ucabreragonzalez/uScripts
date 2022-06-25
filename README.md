@@ -1,15 +1,22 @@
 # uScrips
 Repo for Scripts
 
-I feel so embarrassed, but I need this:
-http://rogerdudler.github.io/git-guide/index.es.html
+To install:
 
-Run the below command to install in "FEDORA"
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/{branch_name}/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "{branch_name}"
+
+To uninstall:
+
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/{branch_name}/uninstall.sh -O uninstall.sh && chmod +x uninstall.sh && sudo ./uninstall.sh
+
+Replace {branch_name} with branch name to install:
+
+e.g.:
 
 # For Dev version:
 
-cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/fnDeploy -O fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/dev/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "dev"
 
-# For master version:
+# For main version:
 
-cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/master/fnDeploy -O fnDeploy && chmod +x fnDeploy && sudo ./fnDeploy
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/main/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "main"
