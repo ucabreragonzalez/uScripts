@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-replace
+#   Date        : 27/06/2022
+#   Objetive    : Replace a given string within another one
+#   Parameters  : string
+#                 separator
+#
+#   Example 1   : string-replace "value 1" "value 2" 
+#-----------------------------------------------------------
+
+original_string="$1"
+find_string="$2"
+replace_string="$3"
+
+echo "${original_string//$find_string/$replace_string}"
