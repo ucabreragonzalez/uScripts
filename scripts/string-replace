@@ -4,10 +4,11 @@
 #   Function    : string-replace
 #   Date        : 27/06/2022
 #   Objetive    : Replace a given string within another one
-#   Parameters  : string
-#                 separator
+#   Parameters  : original_string
+#                 find_string
+#                 replace_string
 #
-#   Example 1   : string-replace "value 1" "value 2" 
+#   Example 1   : string-replace "Original" "tofind" "replacewith" 
 #-----------------------------------------------------------
 
 original_string="$1"
