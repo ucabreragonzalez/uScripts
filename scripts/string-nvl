@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-nvl
+#   Date        : 27/06/2022
+#   Objetive    : Returns first non null/empty string out of two values
+#   Parameters  : string
+#                 separator
+#
+#   Example 1   : string-nvl "value 1" "value 2" 
+#-----------------------------------------------------------
+
+string_one="$1"
+string_two="$2"
+
+echo "${string_one:-"$string_two"}"
