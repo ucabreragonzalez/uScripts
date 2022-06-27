@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-rtrim
+#   Date        : 27/06/2022
+#   Objetive    : Return the original text without the spaces at the rigth.
+#   Parameters  : original_string
+#
+#   Example 1   : string-rtrim "Original string with spaces at the right               "
+#-----------------------------------------------------------
+
+original_string="$1"
+
+if [ "$original_string" != "" ];then
+    echo "${original_string}" | sed -e "s/\ *$//g" -e "s/\t*$//g"
+else
+    echo ""
+fi
