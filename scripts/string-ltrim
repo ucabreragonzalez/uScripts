@@ -6,7 +6,7 @@
 #   Objetive    : Return the original text without the spaces at the left.
 #   Parameters  : original_string
 #
-#   Example 1   : string-ltrim "      Original string with spaces at the left"
+#   Example     : string-ltrim "      Original string with spaces at the left"
 #-----------------------------------------------------------
 
 original_string="$1"

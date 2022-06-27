@@ -1,14 +1,14 @@
 #!/bin/bash
 
 #-----------------------------------------------------------
-#   Function    : string-len
+#   Function    : string-lower
 #   Date        : 27/06/2022
-#   Objetive    : Return the number of characters in string.
+#   Objetive    : Return text in lower case.
 #   Parameters  : original_string
 #
-#   Example     : string-len "String"
+#   Example     : string-lower "Original string"
 #-----------------------------------------------------------
 
-string="$1"
+original_string="$1"
 
-echo ${#string}
+echo $original_string | sed 's/.*/\L&/'

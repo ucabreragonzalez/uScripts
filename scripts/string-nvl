@@ -5,9 +5,8 @@
 #   Date        : 27/06/2022
 #   Objetive    : Returns first non null/empty string out of two values
 #   Parameters  : string
-#                 separator
 #
-#   Example 1   : string-nvl "value 1" "value 2" 
+#   Example     : string-nvl "value 1" "value 2" 
 #-----------------------------------------------------------
 
 string_one="$1"

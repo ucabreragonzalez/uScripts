@@ -8,7 +8,7 @@
 #                 find_string
 #                 replace_string
 #
-#   Example 1   : string-replace "Original" "tofind" "replacewith" 
+#   Example     : string-replace "Original" "tofind" "replacewith" 
 #-----------------------------------------------------------
 
 original_string="$1"
