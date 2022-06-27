@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-ltrim
+#   Date        : 27/06/2022
+#   Objetive    : Return the original text without the spaces at the left.
+#   Parameters  : original_string
+#
+#   Example 1   : string-ltrim "      Original string with spaces at the left"
+#-----------------------------------------------------------
+
+original_string="$1"
+
+if [ "$original_string" != "" ];then
+    echo "${original_string}" | sed -e "s/^\ *//g" -e "s/^\t*//g"
+else
+    echo ""
+fi
