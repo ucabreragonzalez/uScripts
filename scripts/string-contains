@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-contains
+#   Date        : 28/06/2022
+#   Objetive    : Returns true or false deppending if a string contains a substring
+#   Parameters  : original_string
+#                 substring
+#
+#   Example     : string-contains "Original string" "string"
+#-----------------------------------------------------------
+
+original_string="$1"
+substring="$2"
+
+if [[ "$original_string" == *"$substring"* ]]; then
+    echo true
+else
+    echo false
+fi
