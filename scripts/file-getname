@@ -10,7 +10,7 @@
 #-----------------------------------------------------------
 file_path="$1"
 
-if [ $(string-isempty "$file_path") != true ];then
+if [ $(string-isempty "$file_path") = false ];then
     echo "$(basename $file_path)"
 else
     echo ""
