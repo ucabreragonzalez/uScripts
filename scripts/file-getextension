@@ -10,4 +10,18 @@
 #-----------------------------------------------------------
 file_path="$1"
 
-echo "${file_path##*.}"
+if [ $(string-isempty "$file_path") = false ];then
+    arr=$(string-split "$file_path" ".")
+    arr=($arr)
+    icount=${#arr[*]}
+    
+
+    if [ $icount \> 1 ];then
+        icount=$icount-1
+        echo "${arr[$icount]}"
+    else
+        echo ""
+    fi
+else
+    echo ""
+fi
