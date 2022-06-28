@@ -12,3 +12,4 @@
 original_string="$1"
 
 echo $original_string | sed 's/.*/\L&/'
+#echo "${TEXTO,,}"

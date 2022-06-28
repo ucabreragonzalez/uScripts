@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : file-getname
+#   Date        : 28/06/2022
+#   Objetive    : Gets file name and extension from a given path
+#   Parameters  : file_path
+#
+#   Example     : variable=$(file-getname "path/to/the/file/name.ext")
+#-----------------------------------------------------------
+file_path="$1"
+
+echo "$(basename $file_path)"

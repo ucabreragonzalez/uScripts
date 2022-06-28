@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : file-getextension
+#   Date        : 28/06/2022
+#   Objetive    : Gets file extension from a given path
+#   Parameters  : file_path
+#
+#   Example     : variable=$(file-extension "path/to/the/file/name.ext")
+#-----------------------------------------------------------
+file_path="$1"
+
+echo "${file_path##*.}"
