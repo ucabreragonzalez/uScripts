@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-isempty
+#   Date        : 28/06/2022
+#   Objetive    : Returns true or false deppending if string is empty
+#   Parameters  : original_string
+#
+#   Example     : string-isempty "Original string"
+#-----------------------------------------------------------
+
+original_string="$1"
+tmp_string=$(string-replace $original_string " " "")
+
+if [ -z "$tmp_string" ];then
+    echo true
+else
+    echo false
+fi
