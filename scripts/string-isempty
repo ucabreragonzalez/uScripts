@@ -10,7 +10,7 @@
 #-----------------------------------------------------------
 
 original_string="$1"
-tmp_string=$(string-replace $original_string " " "")
+tmp_string="$( string-trim "$original_string" )"
 
 if [ -z "$tmp_string" ];then
     echo true
