@@ -13,7 +13,7 @@
 original_string="$1"
 substring="$2"
 
-if [[ "$original_string" == *"$substring"* ]]; then
+if [[ $(string-isempty "$substring") = false -a "$original_string" == *"$substring"* ]]; then
     echo true
 else
     echo false
