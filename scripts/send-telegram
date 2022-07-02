@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : send-telegram
+#   Date        : 02/07/2022
+#   Objetive    : Send a telegram message with attachment file (if provided)
+#   Parameters  : token
+#                 chat_id
+#                 message_text
+#                 attachment_path
+#
+#   Example     : send-telegram "," "${array[@]}"
+#-----------------------------------------------------------
+
+token="$1"
+chat_id="$2"
+message_text="$3"
+attachment_path="$4"
+
+telegram_message_url="https://api.telegram.org/bot$token/sendMessage"
+telegram_attachment_url="https://api.telegram.org/bot$token/sendDocument"
+
+if [ "$attachment_path" == "" ]; then
+    curl -s -X POST "$telegram_message_url" -F chat_id="$chat_id" -F text="$message_text" > /dev/null
+else
+    curl -s -X POST "$telegram_attachment_url" -F chat_id="$chat_id" -F caption="$message_text" -F document=@"$attachment_path" > /dev/null
+fi
