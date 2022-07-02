@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-replace
+#   Date        : 27/06/2022
+#   Objetive    : Replace a given string within another one
+#   Parameters  : original_string
+#                 find_string
+#                 replace_string
+#
+#   Example     : string-replace "Original" "tofind" "replacewith" 
+#-----------------------------------------------------------
+
+original_string="$1"
+find_string="$2"
+replace_string="$3"
+
+echo "${original_string//$find_string/$replace_string}"

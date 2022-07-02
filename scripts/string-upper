@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-upper
+#   Date        : 27/06/2022
+#   Objetive    : Return text in upper case.
+#   Parameters  : original_string
+#
+#   Example     : string-upper "Original string"
+#-----------------------------------------------------------
+
+original_string="$1"
+
+echo $original_string | sed 's/.*/\U&/'
+#echo "${TEXTO^^}"

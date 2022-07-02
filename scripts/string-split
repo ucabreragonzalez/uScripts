@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-split
+#   Date        : 26/06/2022
+#   Objetive    : Splits a string by a given char and return all array items
+#               : You would still need to cast to an array, see below.
+#   Parameters  : string
+#                 separator
+#
+#   Example 1   : string-split "String|to|split" "|"                <= it returns a string
+#   Example 2   : variable=$(string-split "String|to|split" "|")    <= assign string to a var
+#               : variable=($variable)                              <= convert into a proper array
+#               : echo ${variable[0]}                               <= access items
+#               : echo ${#variable[*]}                              <= get number of elements
+#               : echo ${!variable[*]}                              <= get list of indexes
+#-----------------------------------------------------------
+
+string="$1"
+separator="$2"
+
+# split string and assign to temp var
+temp=(${string//$separator/ })
+
+echo ${temp[*]}
