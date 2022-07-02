@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : add-content
+#   Date        : 25/06/2022
+#   Objetive    : Append text at the end of a file. It creates file it if does not exists.
+#   Parameters  : file_path
+#                 file_content
+#
+#   Example      : add-content "path/to/the/file" "Text to insert"
+#-----------------------------------------------------------
+file_path="$1"
+file_content="$2"
+
+echo "$file_content" >> $file_path

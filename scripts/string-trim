@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-trim
+#   Date        : 27/06/2022
+#   Objetive    : Return the original text without the spaces at the right and left.
+#   Parameters  : original_string
+#
+#   Example     : string-trim "      Original string with spaces at the right & left         "
+#-----------------------------------------------------------
+
+original_string="$1"
+
+if [ "$original_string" != "" ];then
+    echo "$(string-ltrim "$(string-rtrim "$original_string")")"
+else
+    echo ""
+fi

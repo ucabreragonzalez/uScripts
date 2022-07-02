@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-len
+#   Date        : 27/06/2022
+#   Objetive    : Return the number of characters in string.
+#   Parameters  : original_string
+#
+#   Example     : string-len "String"
+#-----------------------------------------------------------
+
+string="$1"
+
+echo ${#string}

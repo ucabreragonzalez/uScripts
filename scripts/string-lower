@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-lower
+#   Date        : 27/06/2022
+#   Objetive    : Return text in lower case.
+#   Parameters  : original_string
+#
+#   Example     : string-lower "Original string"
+#-----------------------------------------------------------
+
+original_string="$1"
+
+echo $original_string | sed 's/.*/\L&/'
+#echo "${TEXTO,,}"

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : file-getextension
+#   Date        : 28/06/2022
+#   Objetive    : Gets file extension from a given path
+#   Parameters  : file_path
+#
+#   Example     : variable=$(file-extension "path/to/the/file/name.ext")
+#-----------------------------------------------------------
+file_path="$1"
+
+if [ $(string-isempty "$file_path") = false ];then
+    arr=$(string-split "$file_path" ".")
+    arr=($arr)
+    icount=${#arr[*]}
+    
+
+    if [ $icount \> 1 ];then
+        icount=$icount-1
+        echo "${arr[$icount]}"
+    else
+        echo ""
+    fi
+else
+    echo ""
+fi

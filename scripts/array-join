@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : array-join
+#   Date        : 02/07/2022
+#   Objetive    : Return array elements joined by a defined char
+#   Parameters  : separator
+#                 array_elements
+#
+#   Example     : array-join "," "${array[@]}"
+#-----------------------------------------------------------
+
+separator="$1"
+shift # remove first parameter
+tmp_array=("$@")
+OIFS=$IFS
+
+IFS="$separator"
+echo "${tmp_array[*]}"
+
+IFS=$OIFS

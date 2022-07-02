@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+#   Function    : string-left
+#   Date        : 27/06/2022
+#   Objetive    : Return left number of characteres of a string
+#   Parameters  : original_string
+#
+#   Example     : string-left "Original string" 6
+#-----------------------------------------------------------
+
+original_string="$1"
+positions="$2"
+
+echo ${original_string:0:$positions}
