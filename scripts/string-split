@@ -3,23 +3,41 @@
 #-----------------------------------------------------------
 #   Function    : string-split
 #   Date        : 26/06/2022
-#   Objetive    : Splits a string by a given char and return all array items
-#               : You would still need to cast to an array, see below.
+#   Objetive    : Splits a string by a given char and creates a variable with array
+#               : It needs to be ran in current shell by run like:
+#                   source string-split []
+#               or  . string-split []
 #   Parameters  : string
 #                 separator
+#                 new_var_name
+#                 new_var_count
 #
-#   Example 1   : string-split "String|to|split" "|"                <= it returns a string
-#   Example 2   : variable=$(string-split "String|to|split" "|")    <= assign string to a var
-#               : variable=($variable)                              <= convert into a proper array
-#               : echo ${variable[0]}                               <= access items
-#               : echo ${#variable[*]}                              <= get number of elements
-#               : echo ${!variable[*]}                              <= get list of indexes
+#   Example 1   : string-split "String|to|split" "|" "array_variable_name" "count_variable_name"    <= it returns a string
+#   Example 2   : echo ${variable[0]}                                                               <= access items
+#               : echo ${#variable[*]}                                                              <= get number of elements
+#               : echo ${!variable[*]}                                                              <= get list of indexes
 #-----------------------------------------------------------
 
-string="$1"
-separator="$2"
+SplitString()
+{
+    local string="$1"
+    local separator="$2"
+    local new_var_name="$3"
+    local new_var_count="$4"
+    local OIFS=$IFS
 
-# split string and assign to temp var
-temp=(${string//$separator/ })
+    local array_result
 
-echo ${temp[*]}
+    IFS=$separator
+    array_result=(${string})
+
+    eval $new_var_name='(${array_result[*]})'
+
+    if [ "$new_var_count" != "" ]; then
+        eval $new_var_count='${#array_result[*]}'
+    fi
+
+    IFS=$OIFS
+}
+
+SplitString "$@"
