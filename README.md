@@ -15,7 +15,7 @@ e.g.:
 
 # For Dev version:
 
-cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/dev/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "dev"
+cd /tmp && wget https://raw.githubusercontent.com/ucabreragonzalez/uScripts/DEV/install.sh -O install.sh && chmod +x install.sh && sudo ./install.sh "DEV"
 
 # For main version:
 
