@@ -11,8 +11,7 @@
 file_path="$1"
 
 if [ $(string-isempty "$file_path") = false ];then
-    arr=$(string-split "$file_path" ".")
-    arr=($arr)
+    . string-split "$file_path" "." "arr"
     icount=${#arr[*]}
     
 
